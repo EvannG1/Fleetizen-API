@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const ShipsModel = mongoose.Schema({
-    _id: {
+    _uuid: {
         type: String,
         required: true
     },

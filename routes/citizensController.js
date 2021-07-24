@@ -14,6 +14,21 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/:id', (req, res) => {
+    if(!ObjectID.isValid(req.params.id)) {
+        return res.status(400).send({
+            "error": "Unknown ID : " + req.params.id
+        });
+    } else {
+        CitizensModel.findById(req.params.id, (error, docs) => {
+            if(!error) res.send(docs);
+            else return res.status(400).send({
+                "error": error.message
+            });
+        })
+    }
+});
+
 // Insertion des données
 
 router.post('/', (req, res) => {
